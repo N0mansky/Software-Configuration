@@ -1,0 +1,279 @@
+let mapleader=";"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+if exists('$TMUX')
+  set term=screen-256color
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set incsearch
+set ignorecase smartcase
+set nocompatible
+"set wildmenu
+
+set backspace=indent,eol,start
+set noswapfile
+set showcmd
+
+set list
+" set listchars=space:·,eol:♡,tab:>-
+" set listchars=eol:♡,tab:>-
+set listchars=tab:>-
+set iskeyword=@,48-57,_,192-255
+set cmdheight=1
+
+
+
+set ruler
+set number 
+set cursorline
+set cursorcolumn
+set hlsearch
+set nowrapscan
+
+set cindent shiftwidth=4
+set shiftwidth=4
+
+"set expandtab
+set tabstop=4
+set softtabstop=4
+
+set wrap
+set textwidth=0
+set whichwrap=b,s,<,>,[,]
+set showbreak=
+
+
+set encoding=utf-8
+set fileencodings=utf-8,gb2312,gbk,gb18030
+set termencoding=utf-8
+set fileformats=unix
+
+au BufWritePost $MYVIMRC source $MYVIMRC
+
+
+" p1
+" molokai
+set background=dark
+let g:molokai_original = 1
+let g:rehash256 = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" p2
+" YouCompleteMe
+
+"let g:ycm_global_ycm_extra_conf='./.ycm_extra_conf.py'
+
+let g:ycm_confirm_extra_conf=0
+let g:ycm_complete_in_comments=1
+
+" YCM 补全菜单配色
+" 菜单
+ "highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
+"" 选中项
+ "highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
+
+" 补全内容不以分割子窗口形式出现，只显示补全列表
+set completeopt-=preview
+
+" 从第一个键入字符就开始罗列匹配项
+let g:ycm_min_num_of_chars_for_completion=1
+
+" 禁止缓存匹配项，每次都重新生成匹配项
+let g:ycm_cache_omnifunc=0
+
+" 语法关键字补全
+let g:ycm_seed_identifiers_with_syntax=1
+
+" 开启 YCM 标签补全引擎
+let g:ycm_collect_identifiers_from_tags_files=1
+
+nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+
+ "YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
+"let OmniCpp_DeaultNamespaces = ["_GLIBCXX_STD"]
+"inoremap <leader>; <C-x><C-o>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" p3
+" a.vim
+nnoremap <Leader>A :A<CR>
+nnoremap <Leader>a :A<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" p4
+" NerdTree
+nmap <Leader>fl :NERDTreeToggle<CR>
+nmap <F2>       :NERDTreeToggle<CR>
+
+let NERDTreeChDirMode=1
+let NERDTreeWinSize=30
+let NERDTreeWinPos="right"
+let NERDTreeShowHidden=1
+let NERDTreeMinimalUI=1
+let NERDTreeAutoDeleteBuffer=1
+
+"显示书签"
+let NERDTreeShowBookmarks=1
+"设置忽略文件类型"
+let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$', '\.git$']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" p5
+" Nerdcommenter
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" p8
+" vim-fswitch
+nmap <silent> <Leader>sw :FSHere<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" p9
+" DfrankUtil
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" p10
+" vimprj
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" p11
+" vim-signature
+let g:SignatureMap = {
+        \ 'Leader'             :  "m",
+        \ 'PlaceNextMark'      :  "m,",
+        \ 'ToggleMarkAtLine'   :  "m.",
+        \ 'PurgeMarksAtLine'   :  "m-",
+        \ 'DeleteMark'         :  "dm",
+        \ 'PurgeMarks'         :  "mda",
+        \ 'PurgeMarkers'       :  "m<BS>",
+        \ 'GotoNextLineAlpha'  :  "']",
+        \ 'GotoPrevLineAlpha'  :  "'[",
+        \ 'GotoNextSpotAlpha'  :  "`]",
+        \ 'GotoPrevSpotAlpha'  :  "`[",
+        \ 'GotoNextLineByPos'  :  "]'",
+        \ 'GotoPrevLineByPos'  :  "['",
+        \ 'GotoNextSpotByPos'  :  "mn", 
+        \ 'GotoPrevSpotByPos'  :  "mp",
+        \ 'GotoNextMarker'     :  "[+",
+        \ 'GotoPrevMarker'     :  "[-",
+        \ 'GotoNextMarkerAny'  :  "]=",
+        \ 'GotoPrevMarkerAny'  :  "[=",
+        \ 'ListLocalMarks'     :  "ms",
+        \ 'ListLocalMarkers'   :  "m?"
+        \ }
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" p12
+"" 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：search in project
+nnoremap <Leader>sp :CtrlSF<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" p13
+" 缩进可视化插件 Indent Guides
+" 随 vim 自启动
+let g:indent_guides_enable_on_vim_startup=1
+" 从第二层开始可视化显示缩进
+let g:indent_guides_start_level=2
+" 色块宽度
+let g:indent_guides_guide_size=1
+" 快捷键 i 开/关缩进可视化
+nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" p14
+" vim-powerline
+" 设置状态栏主题风格
+"let g:Powerline_colorscheme='solarized256'
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" p15
+" vim-cpp-enhanced-highlight
+syntax keyword cppSTLtype initializer_list
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" p16
+" vim-multiple-cursors
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_skip_key='<C-k>'
+ 
+
+syntax enable
+" syntax on
+
+
+set showmode
+
+"au VimEnter * execute "NERDTreeToggle"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"session 相关
+" 设置环境保存项
+set sessionoptions="blank,buffers,globals,localoptions,tabpages,sesdir,folds,help,options,resize,winpos,winsize"
+" 保存 undo 历史
+set undodir=~/.undo_history/
+set undofile
+" 保存快捷键
+"map <leader>ss :mksession! my.vim<cr> :wviminfo! my.viminfo<cr>
+" 恢复快捷键
+"map <leader>rs :source my.vim<cr> :rviminfo my.viminfo<cr>
+
+
+iabbrev #b /*
+iabbrev #e <CR><BackSpace>/
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"set clipboard=unnamed
+
+
+let g:airline#extensions#tabline#enabled = 1
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" p18
+
+"缩进指示线"
+let g:indentLine_char='┆'
+let g:indentLine_enabled = 1
+
+"autopep8设置"
+let g:autopep8_disable_show_diff=1
+nmap <F8> :Autopep8<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+
+set re=1
+set ttyfast
+set lazyredraw
+let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['go', 'java'] }
+
+
+au BufNewFile,BufRead *.py 
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+    
+"\ set textwidth=79 |
+
+au BufNewFile,BufRead *.yml,*.yaml
+    \ set tabstop=2 |
+    \ set softtabstop=2
+
+
+" Use the below highlight group when displaying bad whitespace is desired.
+highlight BadWhitespace ctermbg=red guibg=red
+
+au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
